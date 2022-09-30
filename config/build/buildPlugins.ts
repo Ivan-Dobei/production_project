@@ -4,7 +4,10 @@ import path from "path";
 import webpack from "webpack"
 import { BuildOptios } from "./types/config"
 
-export function buildPlugins({ paths }: BuildOptios): webpack.WebpackPluginInstance[] {
+export function buildPlugins(optios: BuildOptios): webpack.WebpackPluginInstance[] {
+
+    const {paths, isDev} = optios;
+
    return [
       new HtmlWebpackPlugin({
          template: paths.html
@@ -13,6 +16,9 @@ export function buildPlugins({ paths }: BuildOptios): webpack.WebpackPluginInsta
       new MiniCssExtractPlugin({
          filename: 'css/[name].[contenthash:8].css',
          chunkFilename: 'css/[name].[contenthash:8].css',
-      })
+      }),
+       new webpack.DefinePlugin({
+           __IS_DEV__: JSON.stringify(isDev),
+       })
    ]
 }
