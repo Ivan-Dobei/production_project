@@ -1,5 +1,5 @@
-import webpack from "webpack"
-import { BuildOptios } from "./types/config"
+import webpack from 'webpack';
+import { BuildOptios } from './types/config';
 
 export function buildResolves({paths}: BuildOptios): webpack.ResolveOptions {
    return {
@@ -7,6 +7,6 @@ export function buildResolves({paths}: BuildOptios): webpack.ResolveOptions {
       preferAbsolute: true,
       modules: [paths.src, 'node_modules'],
       mainFiles: ['index'],
-      alias: {}
-   }
+      alias: {},
+   };
 }
