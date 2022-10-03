@@ -2,6 +2,7 @@ module.exports = {
    'env': {
       'browser': true,
       'es2021': true,
+      'jest': true,
    },
    'extends': [
       'eslint:recommended',
@@ -27,7 +28,7 @@ module.exports = {
       'indent': ['warn', 3],
       'react/jsx-indent': ['warn', 3],
       'react/react-in-jsx-scope': 'off',
-      'max-len': ['error', {'code': 120}],
+      'max-len': ['error', {'code': 120, 'ignoreComments': true}],
       'comma-dangle': ['error', 'always-multiline'],
       'semi': ['warn', 'always'],
 

@@ -8,6 +8,17 @@ export function buildLoaders({isDev}: BuildOptios): webpack.RuleSetRule[] {
       use: ['@svgr/webpack'],
    };
 
+   const babelLoader = {
+      test: /\.m?js$/,
+      exclude: /node_modules/,
+      use: {
+         loader: 'babel-loader',
+         options: {
+            presets: ['@babel/preset-env'],
+         },
+      },
+   };
+
    const fileLoader = {
       test: /\.(png|jpe?g|gif)$/i,
       use: [
@@ -45,6 +56,7 @@ export function buildLoaders({isDev}: BuildOptios): webpack.RuleSetRule[] {
    return [
       svgLoader,
       fileLoader,
+      babelLoader,
       typescriptLoader,
       styleLoader,
    ];
